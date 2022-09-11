@@ -11,7 +11,7 @@ public class StorageAPI {
     private static String prefix = null;
 
     public StorageAPI() {
-        
+
     }
 
     public Config initConfig(String fileName) {
