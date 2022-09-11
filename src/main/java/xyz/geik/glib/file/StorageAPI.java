@@ -10,8 +10,8 @@ public class StorageAPI {
     private static Plugin plugin = GLibAPI.getInstance();
     private static String prefix = null;
 
-    public StorageAPI(Plugin plugin) {
-        StorageAPI.plugin = plugin;
+    public StorageAPI() {
+        
     }
 
     public Config initConfig(String fileName) {
