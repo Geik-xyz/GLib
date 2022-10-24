@@ -15,9 +15,22 @@ public class GItem {
     public static ItemStack getItem(Config config, String path) {
         String name = config.getText(path + ".name");
         List<String> lore = config.getTextList(path + ".lore");
+        ItemStack item = getSkull8Mat(config, path + ".material");
+
+        ItemMeta meta = item.getItemMeta();
+
+        if (config.contains(path + ".glow") && config.getBoolean(path + ".glow"))
+            glowMeta(meta);
+        meta.setDisplayName(name);
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    public static ItemStack getSkull8Mat(Config config, String path) {
         ItemStack item;
 
-        String material = config.getString(path + ".material");
+        String material = config.getString(path);
         try {
             Material mat = Material.getMaterial(material);
             item = new ItemStack(mat, 1);
@@ -28,16 +41,12 @@ public class GItem {
             else
                 item = SkullCreator.itemFromName(material);
         }
-
-        ItemMeta meta = item.getItemMeta();
-
-        if (config.contains(path + ".glow") && config.getBoolean(path + ".glow")) {
-            meta.addEnchant(Enchantment.DURABILITY, 1, true);
-            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        }
-        meta.setDisplayName(name);
-        meta.setLore(lore);
-        item.setItemMeta(meta);
         return item;
+    }
+
+    public static ItemMeta glowMeta(ItemMeta meta) {
+        meta.addEnchant(Enchantment.DURABILITY, 1, true);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        return meta;
     }
 }
