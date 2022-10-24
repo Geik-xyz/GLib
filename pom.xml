@@ -51,6 +51,13 @@
             <artifactId>PlaceholderAPI</artifactId>
             <version>2.11.2</version>
         </dependency>
+        <!-- SkullCreator -->
+        <dependency>
+            <groupId>dev.dbassett</groupId>
+            <artifactId>skullcreator</artifactId>
+            <version>3.0.1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <!-- Repos -->
@@ -65,6 +72,10 @@
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
+        <repository>
+            <id>skullcreator-repo</id>
+            <url>https://github.com/deanveloper/SkullCreator/raw/mvn-repo/</url>
+        </repository>
     </repositories>
 
     <build>
@@ -78,6 +89,7 @@
                     <artifactSet>
                         <includes>
                             <include>com.github.Son-Hukumdar:*:*:*</include>
+                            <include>dev.dbassett:*:*:*</include>
                         </includes>
                     </artifactSet>
                 </configuration>
