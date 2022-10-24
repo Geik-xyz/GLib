@@ -15,7 +15,7 @@ public class GItem {
     public static ItemStack getItem(Config config, String path) {
         String name = config.getText(path + ".name");
         List<String> lore = config.getTextList(path + ".lore");
-        ItemStack item = getSkull8Mat(config, path + ".material");
+        ItemStack item = getSkull8Mat(config.getString(path + ".material"));
 
         ItemMeta meta = item.getItemMeta();
 
@@ -27,10 +27,19 @@ public class GItem {
         return item;
     }
 
-    public static ItemStack getSkull8Mat(Config config, String path) {
-        ItemStack item;
+    public static ItemStack getItem(String name, List<String> lore, String material, boolean hasGlow) {
+        ItemStack item = getSkull8Mat(material);
+        ItemMeta meta = item.getItemMeta();
+        if (hasGlow)
+            glowMeta(meta);
+        meta.setDisplayName(name);
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+        return item;
+    }
 
-        String material = config.getString(path);
+    public static ItemStack getSkull8Mat(String material) {
+        ItemStack item;
         try {
             Material mat = Material.getMaterial(material);
             item = new ItemStack(mat, 1);
