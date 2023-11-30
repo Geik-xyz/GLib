@@ -40,9 +40,11 @@ public class ItemUtil {
      * @param player offline player for placeholder values
      * @return
      */
-    public static ItemStack getItem(String name, List<String> lore, String material, boolean hasGlow, OfflinePlayer player) {
+    public static ItemStack getItem(String name, List<String> lore, int modelData, String material, boolean hasGlow, OfflinePlayer player) {
         ItemStack item = getSkull8Mat(material);
         ItemMeta meta = item.getItemMeta();
+        if (modelData != 0)
+            meta.setCustomModelData(modelData);
         if (hasGlow)
             glowMeta(meta);
         if (player != null && player.getPlayer() != null) {
