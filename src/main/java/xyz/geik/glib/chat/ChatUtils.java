@@ -99,6 +99,19 @@ public class ChatUtils {
     }
 
     /**
+     * Sends message to command sender
+     * @param player executor
+     * @param message to send
+     * @param placeholders to send
+     */
+    public static void sendMessage(@NotNull CommandSender player, String message, Placeholder... placeholders) {
+        player.sendMessage(ChatUtils.color(
+                replacePlaceholders(
+                        replacePlaceholders(message, new Placeholder("{prefix}", GLib.getLangFile().getMessages().getPrefix())),
+                        placeholders)));
+    }
+
+    /**
      * Replaces placeholder data on string
      * <p><b>also format chat messages too @see ChatUtil#color(String)</b></p>
      *
