@@ -1,4 +1,4 @@
-package xyz.geik.glib.utils.chat.MDChat;
+package xyz.geik.glib.chat.MDChat;
 
 
 import net.md_5.bungee.api.ChatColor;

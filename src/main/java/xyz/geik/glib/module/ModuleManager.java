@@ -5,7 +5,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import xyz.geik.glib.GLib;
 import xyz.geik.glib.api.ModuleDisableEvent;
 import xyz.geik.glib.api.ModuleEnableEvent;
-import xyz.geik.glib.utils.chat.ChatUtils;
+import xyz.geik.glib.chat.ChatUtils;
 
 import java.io.File;
 import java.util.HashMap;

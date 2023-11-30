@@ -8,7 +8,7 @@ import lombok.Getter;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.geik.glib.configuration.Language;
-import xyz.geik.glib.utils.chat.ChatUtils;
+import xyz.geik.glib.chat.ChatUtils;
 
 public class GLib {
 

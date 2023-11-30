@@ -1,7 +1,7 @@
 package xyz.geik.glib.database;
 
 import lombok.Getter;
-import xyz.geik.glib.configuration.SQLConfig;
+import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * @author geik
@@ -11,11 +11,17 @@ import xyz.geik.glib.configuration.SQLConfig;
 public class DatabaseAPI {
 
     @Getter
-    public static DatabaseAPI databaseAPI;
-    private SQLConfig databaseFile;
+    private Database database;
 
-    public DatabaseAPI() {
-        DatabaseAPI.databaseAPI = this;
-        databaseFile = new SQLConfig();
+    protected static JavaPlugin instance;
+
+    public DatabaseAPI(JavaPlugin instance) {
+        DatabaseAPI.instance = instance;
+        database = new SQLite();
+    }
+
+    public DatabaseAPI(JavaPlugin instance, String host, String port, String dbName, String userName, String password) {
+        DatabaseAPI.instance = instance;
+        database = new MySQL(host, port, dbName, userName, password);
     }
 }

@@ -2,7 +2,10 @@ package xyz.geik.glib.database;
 
 import java.sql.Connection;
 
-public interface Database {
+/**
+ * Database interface
+ */
+interface Database {
 
     /**
      * Connection of SQL

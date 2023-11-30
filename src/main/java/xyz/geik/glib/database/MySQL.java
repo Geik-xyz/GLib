@@ -6,16 +6,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-public class MySQL implements Database {
+class MySQL implements Database {
 
     private String host, port, dbName, userName, password;
 
-    public MySQL() {
-        this.host = DatabaseAPI.getDatabaseAPI().getDatabaseFile().getDatabase().getHost();
-        this.port = DatabaseAPI.getDatabaseAPI().getDatabaseFile().getDatabase().getPort();
-        this.dbName = DatabaseAPI.getDatabaseAPI().getDatabaseFile().getDatabase().getTableName();
-        this.userName = DatabaseAPI.getDatabaseAPI().getDatabaseFile().getDatabase().getUserName();
-        this.password = DatabaseAPI.getDatabaseAPI().getDatabaseFile().getDatabase().getPassword();
+    public MySQL(String host, String port, String dbName, String userName, String password) {
+        this.host = host;
+        this.port = port;
+        this.dbName = dbName;
+        this.userName = userName;
+        this.password = password;
     }
 
     @Override

@@ -2,7 +2,6 @@ package xyz.geik.glib.database;
 
 
 import lombok.SneakyThrows;
-import xyz.geik.glib.GLib;
 
 import java.io.File;
 import java.sql.Connection;
@@ -14,7 +13,7 @@ import java.sql.Statement;
  *
  * @author poyrazinan
  */
-public class SQLite implements Database {
+class SQLite implements Database {
 
     /**
      * Connects database of plugin.
@@ -26,7 +25,7 @@ public class SQLite implements Database {
             // JDBC Class for SQLite
             Class.forName("org.sqlite.JDBC");
             // Getting plugin name for folder destination
-            String pluginName = GLib.getInstance().getDescription().getName();
+            String pluginName = DatabaseAPI.instance.getDescription().getName();
             // Getting file
             File databaseFile = new File("plugins/" + pluginName + "/storage/database.db");
             // Going in
@@ -41,7 +40,7 @@ public class SQLite implements Database {
 
 
     public void initSQL(String query) {
-        File databaseFile = new File("plugins/" + GLib.getInstance().getDescription().getName() + "/database.db");
+        File databaseFile = new File("plugins/" + DatabaseAPI.instance.getDescription().getName() + "/database.db");
         if (!databaseFile.exists()) {
             createTables(query);
         }

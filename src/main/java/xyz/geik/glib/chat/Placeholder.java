@@ -1,4 +1,4 @@
-package xyz.geik.glib.utils.chat;
+package xyz.geik.glib.chat;
 
 
 import lombok.Data;

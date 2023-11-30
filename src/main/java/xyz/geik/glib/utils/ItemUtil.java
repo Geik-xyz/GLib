@@ -13,7 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
-import xyz.geik.glib.utils.chat.ChatUtils;
+import xyz.geik.glib.chat.ChatUtils;
 import org.bukkit.inventory.meta.Damageable;
 
 import java.io.ByteArrayInputStream;
