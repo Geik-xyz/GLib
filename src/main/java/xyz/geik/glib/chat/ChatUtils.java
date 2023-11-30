@@ -95,7 +95,7 @@ public class ChatUtils {
      */
     public static void sendMessage(@NotNull CommandSender player, String message) {
         player.sendMessage(ChatUtils.color(replacePlaceholders(message, new Placeholder("{prefix}",
-                GLib.getLangFile().getMessages().getPrefix()))));
+                GLib.getPrefix()))));
     }
 
     /**
@@ -107,7 +107,7 @@ public class ChatUtils {
     public static void sendMessage(@NotNull CommandSender player, String message, Placeholder... placeholders) {
         player.sendMessage(ChatUtils.color(
                 replacePlaceholders(
-                        replacePlaceholders(message, new Placeholder("{prefix}", GLib.getLangFile().getMessages().getPrefix())),
+                        replacePlaceholders(message, new Placeholder("{prefix}", GLib.getPrefix())),
                         placeholders)));
     }
 
