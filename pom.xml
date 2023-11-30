@@ -38,6 +38,7 @@
             <artifactId>inventorygui</artifactId>
             <!--The following version may not be the latest. Check it before using.-->
             <version>1.6-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
         <!-- PlaceholderAPI -->
         <dependency>
@@ -51,6 +52,7 @@
             <groupId>com.github.poyrazinan</groupId>
             <artifactId>Discord-Webhook</artifactId>
             <version>1.0.3</version>
+            <scope>compile</scope>
         </dependency>
         <!-- SkullCreator -->
         <dependency>
@@ -64,18 +66,21 @@
             <groupId>dev.triumphteam</groupId>
             <artifactId>triumph-cmd-bukkit</artifactId>
             <version>2.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
         <!-- Okaeri Config Storage -->
         <dependency>
             <groupId>eu.okaeri</groupId>
             <artifactId>okaeri-configs-yaml-bukkit</artifactId>
             <version>4.0.4</version>
+            <scope>compile</scope>
         </dependency>
         <!-- xSeries -->
         <dependency>
             <groupId>com.github.cryptomorin</groupId>
             <artifactId>XSeries</artifactId>
             <version>9.4.0</version>
+            <scope>compile</scope>
         </dependency>
         <!-- apache commons -->
         <dependency>
@@ -87,6 +92,7 @@
             <groupId>com.github.poyrazinan</groupId>
             <artifactId>JavaLicense</artifactId>
             <version>1.3</version>
+            <scope>compile</scope>
         </dependency>
         <!-- ElementalGems -->
         <dependency>
@@ -131,12 +137,14 @@
             <groupId>com.github.poyrazinan</groupId>
             <artifactId>SimplixStorage</artifactId>
             <version>-ae92994823-1</version>
+            <scope>compile</scope>
         </dependency>
         <!-- NBT Api -->
         <dependency>
             <groupId>de.tr7zw</groupId>
             <artifactId>item-nbt-api</artifactId>
             <version>2.12.1</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
@@ -198,23 +206,10 @@
                 <version>3.5.0</version>
                 <configuration>
                     <createDependencyReducedPom>false</createDependencyReducedPom>
-                    <minimizeJar>true</minimizeJar>
                     <relocations>
                         <relocation>
                             <pattern>com.cryptomorin.xseries</pattern>
                             <shadedPattern>xyz.geik.glib.shades.xseries</shadedPattern>
-                            <excludes>
-                                <exclude>com/cryptomorin/xseries/XBiome*</exclude>
-                                <exclude>com/cryptomorin/xseries/XEnchantment*</exclude>
-                                <exclude>com/cryptomorin/xseries/XEntity*</exclude>
-                                <exclude>com/cryptomorin/xseries/XPotion*</exclude>
-                                <exclude>com/cryptomorin/xseries/particles/*</exclude>
-                                <exclude>com/cryptomorin/xseries/XTag*</exclude>
-                                <exclude>com/cryptomorin/xseries/NMSExtras*</exclude>
-                                <exclude>com/cryptomorin/xseries/NoteBlockMusic*</exclude>
-                                <exclude>com/cryptomorin/xseries/SkullCacheListener*</exclude>
-                                <exclude>com/cryptomorin/xseries/XItemStack*</exclude>
-                            </excludes>
                         </relocation>
                         <relocation>
                             <pattern>de.leonhard.storage</pattern>
@@ -245,6 +240,11 @@
                             <shadedPattern>xyz.geik.farmer.shades.nbtapi</shadedPattern>
                         </relocation>
                     </relocations>
+                    <artifactSet>
+                        <includes>
+                            <include>*</include>
+                        </includes>
+                    </artifactSet>
                 </configuration>
                 <executions>
                     <execution>
