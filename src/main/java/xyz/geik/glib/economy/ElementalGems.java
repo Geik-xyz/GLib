@@ -34,7 +34,7 @@ class ElementalGems implements Economy {
      * @return price
      */
     @Override
-    public double withdrawPlayer(OfflinePlayer player, long price) {
+    public double withdrawPlayer(OfflinePlayer player, double price) {
         if (this.economy) {
             GemAPI gemAPI = new GemAPI();
             gemAPI.removeGems(player.getUniqueId(), price);

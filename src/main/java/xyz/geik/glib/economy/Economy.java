@@ -17,7 +17,7 @@ public interface Economy {
      * @param player target player
      * @param price amount of money
      */
-    double withdrawPlayer(OfflinePlayer player, long price);
+    double withdrawPlayer(OfflinePlayer player, double price);
 
     /**
      * Deposits money to offline player

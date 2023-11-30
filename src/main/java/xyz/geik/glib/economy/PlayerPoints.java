@@ -35,7 +35,7 @@ class PlayerPoints implements Economy {
      * @return price
      */
     @Override
-    public double withdrawPlayer(OfflinePlayer player, long price) {
+    public double withdrawPlayer(OfflinePlayer player, double price) {
         if (this.economy != null) {
             this.economy.take(player.getUniqueId(), (int) price);
         }

@@ -39,7 +39,7 @@ class Vault implements xyz.geik.glib.economy.Economy {
      * @return price
      */
     @Override
-    public double withdrawPlayer(OfflinePlayer player, long price) {
+    public double withdrawPlayer(OfflinePlayer player, double price) {
         if (this.economy != null) {
             this.economy.withdrawPlayer(player, price);
         }
