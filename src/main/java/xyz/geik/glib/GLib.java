@@ -12,7 +12,7 @@ public class GLib {
     private static JavaPlugin instance;
 
     public GLib(JavaPlugin plugin, String prefix) {
-        GLib.instance = instance;
+        GLib.instance = plugin;
         GLib.prefix = prefix;
     }
 }
