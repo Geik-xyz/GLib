@@ -6,6 +6,7 @@ import lombok.SneakyThrows;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -42,7 +43,14 @@ class SQLite implements Database {
     public void initSQL(String query) {
         File databaseFile = new File("plugins/" + DatabaseAPI.instance.getDescription().getName() + "/database.db");
         if (!databaseFile.exists()) {
-            createTables(query);
+            try {
+                Class.forName("org.sqlite.JDBC");
+                String url = "jdbc:sqlite:" + databaseFile.getParentFile().getAbsolutePath() + "/database.db";
+                Connection connection = DriverManager.getConnection(url);
+                connection.close();
+            } catch(SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 

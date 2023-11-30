@@ -10,7 +10,7 @@ import org.bukkit.OfflinePlayer;
  * @author poyrazinan, Amowny
  * @since v6-b003
  */
-interface Economy {
+public interface Economy {
 
     /**
      * Withdraws money from player

@@ -32,7 +32,6 @@ class MySQL implements Database {
 
     @Override
     public void initSQL(String query) {
-        createTables(query);
     }
 
     /**

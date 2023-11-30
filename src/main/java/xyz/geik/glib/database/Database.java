@@ -5,7 +5,7 @@ import java.sql.Connection;
 /**
  * Database interface
  */
-interface Database {
+public interface Database {
 
     /**
      * Connection of SQL
