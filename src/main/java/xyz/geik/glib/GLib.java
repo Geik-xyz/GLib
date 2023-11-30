@@ -24,8 +24,9 @@ public class GLib {
     @Getter
     private static BukkitCommandManager<CommandSender> commandManager;
 
-    public GLib(JavaPlugin instance) {
+    public GLib(JavaPlugin instance, Language langFile) {
         GLib.instance = instance;
+        GLib.langFile = langFile;
     }
 
     /**
