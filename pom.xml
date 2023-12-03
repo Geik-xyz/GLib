@@ -40,13 +40,6 @@
             <version>1.6-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
-        <!-- PlaceholderAPI -->
-        <dependency>
-            <groupId>me.clip</groupId>
-            <artifactId>placeholderapi</artifactId>
-            <version>LATEST</version>
-            <scope>compile</scope>
-        </dependency>
         <!-- Discord webhook -->
         <dependency>
             <groupId>com.github.poyrazinan</groupId>
@@ -165,11 +158,6 @@
         <repository>
             <id>minebench-repo</id>
             <url>https://repo.minebench.de/</url>
-        </repository>
-        <!-- PlaceholderAPI -->
-        <repository>
-            <id>placeholderapi</id>
-            <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
         <!-- triump -->
         <repository>
