@@ -11,17 +11,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class DatabaseAPI {
 
     @Getter
-    private Database database;
+    private static Database database;
 
     protected static JavaPlugin instance;
 
     public DatabaseAPI(JavaPlugin instance) {
         DatabaseAPI.instance = instance;
-        database = new SQLite();
+        DatabaseAPI.database = new SQLite();
     }
 
     public DatabaseAPI(JavaPlugin instance, String host, String port, String dbName, String userName, String password) {
         DatabaseAPI.instance = instance;
-        database = new MySQL(host, port, dbName, userName, password);
+        DatabaseAPI.database = new MySQL(host, port, dbName, userName, password);
     }
 }
