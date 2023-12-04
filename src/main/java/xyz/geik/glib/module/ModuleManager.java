@@ -1,5 +1,6 @@
 package xyz.geik.glib.module;
 
+import lombok.Getter;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import xyz.geik.glib.GLib;
@@ -21,6 +22,7 @@ public class ModuleManager {
     /**
      * List of modules
      */
+    @Getter
     private static HashMap<String, Modulable> modules = new HashMap<>();
 
     /**
