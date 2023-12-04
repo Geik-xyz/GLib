@@ -24,29 +24,6 @@ import java.util.stream.IntStream;
 public abstract class GModule implements Modulable {
 
     /**
-     * Registers config to file
-     * @param configClass config class
-     * @param instance of plugin
-     */
-    public OkaeriConfig loadConfig(Class configClass, JavaPlugin instance) {
-        return ConfigManager.create(configClass, (it) -> {
-            it.withConfigurer(new YamlBukkitConfigurer());
-            it.withBindFile(new File(instance.getDataFolder() + "/modules/" + getName(), "config.yml"));
-            it.saveDefaults();
-            it.load(true);
-        });
-    }
-
-
-
-    /**
-     * Reloads config file
-     */
-    public void reloadConfig(@NotNull OkaeriConfig config) {
-        config.load(true);
-    }
-
-    /**
      * List of dependencies contains dependency tree
      */
     @Getter
