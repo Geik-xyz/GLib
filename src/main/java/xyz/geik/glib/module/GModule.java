@@ -31,7 +31,7 @@ public abstract class GModule implements Modulable {
      * @param configClass config class
      * @param instance of plugin
      */
-    public void registerConfig(Class<OkaeriConfig> configClass, JavaPlugin instance) {
+    public void registerConfig(Class configClass, JavaPlugin instance) {
         this.configFile = ConfigManager.create(configClass, (it) -> {
             it.withConfigurer(new YamlBukkitConfigurer());
             it.withBindFile(new File(instance.getDataFolder() + "/modules/" + getName(), "config.yml"));
