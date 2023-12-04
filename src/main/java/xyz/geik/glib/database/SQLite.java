@@ -36,7 +36,7 @@ public class SQLite implements Database {
             // Then using driver and return it.
             return DriverManager.getConnection("jdbc:sqlite:" + absolutePath + "/database.db");
         }
-        catch (Exception e) { return null; }
+        catch (Exception e) { e.printStackTrace(); return null; }
     }
 
 
