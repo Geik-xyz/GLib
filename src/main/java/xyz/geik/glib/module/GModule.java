@@ -23,16 +23,13 @@ import java.util.stream.IntStream;
  */
 public abstract class GModule implements Modulable {
 
-    @Getter
-    private OkaeriConfig configFile;
-
     /**
      * Registers config to file
      * @param configClass config class
      * @param instance of plugin
      */
-    public void registerConfig(Class configClass, JavaPlugin instance) {
-        this.configFile = ConfigManager.create(configClass, (it) -> {
+    public OkaeriConfig loadConfig(Class configClass, JavaPlugin instance) {
+        return ConfigManager.create(configClass, (it) -> {
             it.withConfigurer(new YamlBukkitConfigurer());
             it.withBindFile(new File(instance.getDataFolder() + "/modules/" + getName(), "config.yml"));
             it.saveDefaults();
@@ -40,11 +37,13 @@ public abstract class GModule implements Modulable {
         });
     }
 
+
+
     /**
      * Reloads config file
      */
-    public void reloadConfig() {
-        getConfigFile().load(true);
+    public void reloadConfig(@NotNull OkaeriConfig config) {
+        config.load(true);
     }
 
     /**
