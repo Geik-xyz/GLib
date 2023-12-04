@@ -9,7 +9,7 @@ import org.bukkit.OfflinePlayer;
  * @author Amowny
  * @since v6-b003
  */
-class RoyaleEconomy implements Economy {
+public class RoyaleEconomy implements Economy {
 
     private APIHandler economy = null;
 

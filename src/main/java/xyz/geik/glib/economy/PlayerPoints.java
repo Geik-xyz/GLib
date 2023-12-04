@@ -10,7 +10,7 @@ import org.bukkit.OfflinePlayer;
  * @author Amowny
  * @since v6-b003
  */
-class PlayerPoints implements Economy {
+public class PlayerPoints implements Economy {
 
     private PlayerPointsAPI economy = null;
 

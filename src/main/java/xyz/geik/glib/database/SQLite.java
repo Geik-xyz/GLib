@@ -14,7 +14,7 @@ import java.sql.Statement;
  *
  * @author poyrazinan
  */
-class SQLite implements Database {
+public class SQLite implements Database {
 
     /**
      * Connects database of plugin.

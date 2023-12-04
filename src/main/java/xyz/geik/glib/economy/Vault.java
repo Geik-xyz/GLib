@@ -10,7 +10,7 @@ import net.milkbowl.vault.economy.Economy;
  * @author geik
  * @since b000
  */
-class Vault implements xyz.geik.glib.economy.Economy {
+public class Vault implements xyz.geik.glib.economy.Economy {
 
     private Economy economy = null;
 

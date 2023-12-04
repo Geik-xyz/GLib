@@ -11,7 +11,7 @@ import org.gestern.gringotts.api.Eco;
  * @author Amowny
  * @since v6-b003
  */
-class GrinGotts implements Economy {
+public class GrinGotts implements Economy {
 
     private Eco economy = null;
 

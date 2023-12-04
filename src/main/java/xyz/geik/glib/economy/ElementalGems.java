@@ -9,7 +9,7 @@ import org.bukkit.OfflinePlayer;
  * @author Amowny
  * @since v6-b003
  */
-class ElementalGems implements Economy {
+public class ElementalGems implements Economy {
 
     private boolean economy;
 

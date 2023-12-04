@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-class MySQL implements Database {
+public class MySQL implements Database {
 
     private String host, port, dbName, userName, password;
 
