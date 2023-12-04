@@ -21,6 +21,7 @@ public class SQLite implements Database {
      *
      * @return Connection
      */
+    @Override
     public Connection getConnection() {
         try {
             // JDBC Class for SQLite
@@ -40,6 +41,7 @@ public class SQLite implements Database {
     }
 
 
+    @Override
     public void initSQL(String query) {
         File databaseFile = new File("plugins/" + DatabaseAPI.instance.getDescription().getName() + "/database.db");
         if (!databaseFile.exists()) {
