@@ -1,6 +1,7 @@
 package xyz.geik.glib.module;
 
 import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import xyz.geik.glib.GLib;
@@ -75,7 +76,8 @@ public class ModuleManager {
             if (getModuleStatus(module.getName())) {
                 module.setEnabled(true);
                 // Enable event
-                org.bukkit.Bukkit.getPluginManager().callEvent(new ModuleEnableEvent(module));
+                Bukkit.getScheduler().runTask(GLib.getInstance(), () ->
+                        Bukkit.getPluginManager().callEvent(new ModuleEnableEvent(module)));
                 module.onEnable();
                 String message = "&3[" + GLib.getInstance().getName() + "] &a" + module.getName() + " enabled.";
                 ChatUtils.sendMessage(org.bukkit.Bukkit.getConsoleSender(), message);
@@ -97,7 +99,8 @@ public class ModuleManager {
             if (module.isEnabled()) {
                 module.setEnabled(false);
                 // Disable event
-                org.bukkit.Bukkit.getPluginManager().callEvent(new ModuleDisableEvent(module));
+                Bukkit.getScheduler().runTask(GLib.getInstance(), () ->
+                        Bukkit.getPluginManager().callEvent(new ModuleDisableEvent(module)));
                 module.onDisable();
                 String message = "&3[" + GLib.getInstance().getName() + "] &c" + module.getName() + " disabled.";
                 ChatUtils.sendMessage(org.bukkit.Bukkit.getConsoleSender(), message);
