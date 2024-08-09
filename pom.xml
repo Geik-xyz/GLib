@@ -147,6 +147,13 @@
             <version>2.13.1</version>
             <scope>compile</scope>
         </dependency>
+        <!-- MorePaperLib -->
+        <dependency>
+            <groupId>space.arim.morepaperlib</groupId>
+            <artifactId>morepaperlib</artifactId>
+            <version>0.4.3</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <!-- Repos -->
@@ -195,6 +202,11 @@
             <id>codemc-repo</id>
             <url>https://repo.codemc.io/repository/maven-public/</url>
             <layout>default</layout>
+        </repository>
+        <!-- MorePaperLib-->
+        <repository>
+            <id>arim-mvn-lgpl3</id>
+            <url>https://mvn-repo.arim.space/lesser-gpl3/</url>
         </repository>
     </repositories>
 
