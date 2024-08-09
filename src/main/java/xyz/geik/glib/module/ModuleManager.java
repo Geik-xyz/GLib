@@ -76,7 +76,7 @@ public class ModuleManager {
             if (getModuleStatus(module.getName())) {
                 module.setEnabled(true);
                 // Enable event
-                Bukkit.getScheduler().runTask(GLib.getInstance(), () ->
+                GLib.getMorePaperLib().scheduling().globalRegionalScheduler().run(() ->
                         Bukkit.getPluginManager().callEvent(new ModuleEnableEvent(module)));
                 module.onEnable();
                 String message = "&3[" + GLib.getInstance().getName() + "] &a" + module.getName() + " enabled.";
@@ -99,8 +99,7 @@ public class ModuleManager {
             if (module.isEnabled()) {
                 module.setEnabled(false);
                 // Disable event
-                Bukkit.getScheduler().runTask(GLib.getInstance(), () ->
-                        Bukkit.getPluginManager().callEvent(new ModuleDisableEvent(module)));
+                GLib.getMorePaperLib().scheduling().globalRegionalScheduler().run(() -> Bukkit.getPluginManager().callEvent(new ModuleDisableEvent(module)));
                 module.onDisable();
                 String message = "&3[" + GLib.getInstance().getName() + "] &c" + module.getName() + " disabled.";
                 ChatUtils.sendMessage(org.bukkit.Bukkit.getConsoleSender(), message);
