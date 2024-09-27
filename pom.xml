@@ -187,10 +187,6 @@
             <id>okaeri-repo</id>
             <url>https://storehouse.okaeri.eu/repository/maven-public/</url>
         </repository>
-        <repository>
-            <id>skullcreator-repo</id>
-            <url>https://github.com/deanveloper/SkullCreator/raw/mvn-repo/</url>
-        </repository>
         <!-- PlayerPoints -->
         <repository>
             <id>rosewood-repo</id>
@@ -230,10 +226,6 @@
                         <relocation>
                             <pattern>de.themoep.inventorygui</pattern>
                             <shadedPattern>xyz.geik.glib.shades.inventorygui</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>dev.dbassett.skullcreator</pattern>
-                            <shadedPattern>xyz.geik.glib.shades.skullcreator</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>dev.triumphteam</pattern>
