@@ -1,8 +1,10 @@
 package xyz.geik.glib.utils;
 
 import com.cryptomorin.xseries.XMaterial;
-import dev.dbassett.skullcreator.SkullCreator;
+import com.cryptomorin.xseries.profiles.builder.XSkull;
+import com.cryptomorin.xseries.profiles.objects.Profileable;
 import org.apache.commons.lang3.text.WordUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.enchantments.Enchantment;
@@ -67,10 +69,15 @@ public class ItemUtil {
             item = mat.parseItem();
         }
         catch (Exception e) {
-            if (material.length() > 63)
-                item = SkullCreator.itemFromBase64(material);
-            else
-                item = SkullCreator.itemFromName(material);
+            if (material.length() > 63) {
+                item = XMaterial.PLAYER_HEAD.parseItem();
+                XSkull.of(item).profile(Profileable.detect(material)).apply();
+            }
+            else {
+                item = XSkull.createItem()
+                        .profile(Profileable.of(Bukkit.getPlayerExact(material)))
+                        .apply();
+            }
         }
         return item;
     }

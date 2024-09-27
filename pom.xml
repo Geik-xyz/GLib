@@ -54,13 +54,6 @@
             <version>1.0.3</version>
             <scope>compile</scope>
         </dependency>
-        <!-- SkullCreator -->
-        <dependency>
-            <groupId>dev.dbassett</groupId>
-            <artifactId>skullcreator</artifactId>
-            <version>3.0.1</version>
-            <scope>compile</scope>
-        </dependency>
         <!-- Triump command -->
         <dependency>
             <groupId>dev.triumphteam</groupId>
@@ -88,6 +81,12 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.13.0</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mojang</groupId>
+            <artifactId>authlib</artifactId>
+            <version>6.0.54</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.poyrazinan</groupId>
