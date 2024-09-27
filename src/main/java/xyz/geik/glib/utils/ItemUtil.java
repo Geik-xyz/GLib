@@ -76,7 +76,7 @@ public class ItemUtil {
     }
 
     private static ItemMeta glowMeta(ItemMeta meta) {
-        meta.addEnchant(Enchantment.DURABILITY, 1, true);
+        meta.addEnchant(Enchantment.getByName("KNOCKBACK"), 1, true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         return meta;
     }

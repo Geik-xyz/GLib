@@ -12,7 +12,7 @@ public class FireworkAPI {
 
     public static void spawn(Location location, int amount, Color color) {
         Location loc = location;
-        Firework fw = (Firework) loc.getWorld().spawnEntity(loc, EntityType.FIREWORK);
+        Firework fw = (Firework) loc.getWorld().spawnEntity(loc, EntityType.valueOf("FIREWORK"));
         FireworkMeta fwm = fw.getFireworkMeta();
 
         fwm.setPower(2);
@@ -26,7 +26,7 @@ public class FireworkAPI {
         fw.detonate();
 
         for(int i = 0;i<amount; i++){
-            Firework fw2 = (Firework) loc.getWorld().spawnEntity(loc, EntityType.FIREWORK);
+            Firework fw2 = (Firework) loc.getWorld().spawnEntity(loc, EntityType.valueOf("FIREWORK"));
             fw2.setFireworkMeta(fwm);}
     }
 }
