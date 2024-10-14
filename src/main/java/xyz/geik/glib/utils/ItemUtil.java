@@ -69,15 +69,8 @@ public class ItemUtil {
             item = mat.parseItem();
         }
         catch (Exception e) {
-            if (material.length() > 63) {
-                item = XMaterial.PLAYER_HEAD.parseItem();
-                XSkull.of(item).profile(Profileable.detect(material)).apply();
-            }
-            else {
-                item = XSkull.createItem()
-                        .profile(Profileable.of(Bukkit.getPlayerExact(material)))
-                        .apply();
-            }
+            item = XMaterial.PLAYER_HEAD.parseItem();
+            XSkull.of(item).profile(Profileable.detect(material)).apply();
         }
         return item;
     }
