@@ -71,7 +71,7 @@ public class ItemUtil {
         catch (Exception e) {
             item = XMaterial.PLAYER_HEAD.parseItem();
             try {
-                XSkull.of(item).profile(Profileable.detect(material)).fallback(null).apply();
+                XSkull.of(item).profile(Profileable.detect(material)).apply();
             }
             catch (Exception ignored) {}
         }
