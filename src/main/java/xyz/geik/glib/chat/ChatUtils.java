@@ -1,9 +1,7 @@
 package xyz.geik.glib.chat;
 
+
 import me.clip.placeholderapi.PlaceholderAPI;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.md_5.bungee.api.ChatColor;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.bukkit.OfflinePlayer;
@@ -42,16 +40,6 @@ public class ChatUtils {
     private final static Pattern HEX_PATTERN = Pattern.compile("#[a-fA-F0-9]{6}");
 
     /**
-     * MiniMessage instance for parsing MiniMessage tags
-     */
-    private static final MiniMessage miniMessage = MiniMessage.miniMessage();
-
-    /**
-     * Legacy serializer for converting & color codes
-     */
-    private static final LegacyComponentSerializer legacySerializer = LegacyComponentSerializer.legacy('&');
-
-    /**
      * Applies chat color formats to message
      * @param message to convert
      * @return String of converted message
@@ -59,11 +47,7 @@ public class ChatUtils {
     public static String color(String message) {
         message = StringEscapeUtils.unescapeHtml4(message);
 
-        Component component = miniMessage.deserialize(message);
-
-        String legacyMessage = legacySerializer.serialize(component);
-
-        Matcher matcher = HEX_PATTERN.matcher(legacyMessage);
+        Matcher matcher = HEX_PATTERN.matcher(message);
         StringBuffer buffer = new StringBuffer();
         while (matcher.find()) {
             matcher.appendReplacement(buffer, ChatColor.of(matcher.group()).toString());
@@ -72,28 +56,17 @@ public class ChatUtils {
         return ChatColor.translateAlternateColorCodes('&', matcher.appendTail(buffer).toString());
     }
 
-    /**
-     * Applies chat color formats to message with PlaceholderAPI support
-     * @param player OfflinePlayer for PlaceholderAPI
-     * @param message to convert
-     * @return String of converted message
-     */
     public static String color(OfflinePlayer player, String message) {
         message = StringEscapeUtils.unescapeHtml4(message);
 
-        message = PlaceholderAPI.setPlaceholders(player, message);
-
-        Component component = miniMessage.deserialize(message);
-
-        String legacyMessage = legacySerializer.serialize(component);
-
-        Matcher matcher = HEX_PATTERN.matcher(legacyMessage);
+        Matcher matcher = HEX_PATTERN.matcher(message);
         StringBuffer buffer = new StringBuffer();
         while (matcher.find()) {
             matcher.appendReplacement(buffer, ChatColor.of(matcher.group()).toString());
         }
 
-        return ChatColor.translateAlternateColorCodes('&', matcher.appendTail(buffer).toString());
+        return ChatColor.translateAlternateColorCodes('&',
+                PlaceholderAPI.setPlaceholders(player, matcher.appendTail(buffer).toString()));
     }
 
     /**
@@ -106,9 +79,9 @@ public class ChatUtils {
     }
 
     /**
-     * Applies chat color formats to list with PlaceholderAPI support
+     * Applies chat color formats to list
      * @param list to convert
-     * @param player OfflinePlayer for PlaceholderAPI
+     * @param player who will be replaced for placeholders
      * @return List of converted message
      */
     public static List<String> color(List<String> list, OfflinePlayer player) {
@@ -161,6 +134,6 @@ public class ChatUtils {
      * @return converted list value
      */
     public static List<String> replacePlaceholders(List<String> list, Placeholder... placeholders) {
-        return list.stream().map(s -> replacePlaceholders(s, placeholders)).collect(Collectors.toList());
+        return list.stream().map(s-> replacePlaceholders(s, placeholders)).collect(Collectors.toList());
     }
 }
