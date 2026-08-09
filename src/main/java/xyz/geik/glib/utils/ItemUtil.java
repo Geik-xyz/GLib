@@ -14,12 +14,12 @@ import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
-import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
 import xyz.geik.glib.chat.ChatUtils;
 import org.bukkit.inventory.meta.Damageable;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.util.Base64;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -110,7 +110,7 @@ public class ItemUtil {
 
             dataOutput.writeObject(itemStack);
 
-            return Base64Coder.encodeLines(outputStream.toByteArray());
+            return Base64.getEncoder().encodeToString(outputStream.toByteArray());
         } catch (Exception e) {
             throw new IllegalStateException("Unable to save itemStack.", e);
         }
@@ -122,7 +122,7 @@ public class ItemUtil {
      * @return created item
      */
     public static ItemStack fromBase64(String encoded) {
-        try (ByteArrayInputStream outputStream = new ByteArrayInputStream(Base64Coder.decodeLines(encoded));
+        try (ByteArrayInputStream outputStream = new ByteArrayInputStream(Base64.getMimeDecoder().decode(encoded));
              BukkitObjectInputStream dataOutput = new BukkitObjectInputStream(outputStream)) {
 
             return (ItemStack) dataOutput.readObject();
@@ -147,7 +147,7 @@ public class ItemUtil {
             entries = itemStack.getEnchantments().entrySet();
         }
         for (Map.Entry<Enchantment, Integer> entry : entries) {
-            builder.append((XMaterial.supports(13) ? entry.getKey().getKey().getKey() : entry.getKey().getName()).toUpperCase())
+            builder.append((XMaterial.supports(1, 13) ? entry.getKey().getKey().getKey() : entry.getKey().getName()).toUpperCase())
                     .append(':').append(entry.getValue()).append(',');
         }
 
@@ -164,7 +164,7 @@ public class ItemUtil {
      */
     public static String getModelId(ItemStack itemStack) {
         String modelId = null;
-        if (XMaterial.supports(14) && itemStack.hasItemMeta() && itemStack.getItemMeta().hasCustomModelData())
+        if (XMaterial.supports(1, 14) && itemStack.hasItemMeta() && itemStack.getItemMeta().hasCustomModelData())
             modelId = String.valueOf(itemStack.getItemMeta().getCustomModelData());
         return modelId;
     }
@@ -177,7 +177,7 @@ public class ItemUtil {
      */
     public static int getDurability(ItemStack item, int maxDurability) {
         int durability = 0;
-        if (XMaterial.supports(13))
+        if (XMaterial.supports(1, 13))
             durability = maxDurability - ((Damageable) item.getItemMeta()).getDamage();
         else
             durability = maxDurability + 1 - item.getDurability();
